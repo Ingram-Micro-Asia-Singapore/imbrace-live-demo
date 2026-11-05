@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>iMBrace live demo</title>
+<meta name="description" content="Try iMBrace live: respond to a marketing campaign and ask a customer-care assistant. Demo environment, synthetic data.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top"><img src="ingram-micro-logo.svg" alt="Ingram Micro" class="logo"><span class="built">Built on iMBrace</span></header>
+<main>
+  <p class="eyebrow">Live demo</p>
+  <h1>Try iMBrace live: answer a campaign, then ask customer care.</h1>
+  <p class="lead">Both chats below run on iMBrace. What you do shows up in the iMBrace cloud console as it happens.</p>
+  <div class="notice" role="note"><strong>Demo environment, synthetic data.</strong> Please don't enter real personal details: what you type is stored in the demo account.</div>
+
+  <div class="cards">
+    <section class="card" id="campaign">
+      <p class="eyebrow">1 &middot; Campaign response</p>
+      <h2>Respond to a campaign</h2>
+      <div class="msg">
+        <p class="msg-from">Altavia Cloud Solutions (fictional) &middot; email campaign</p>
+        <p class="msg-subject">SecureEdge: first month free for new sites</p>
+        <p>Share the SecureEdge partner promotion with your accounts this week. New sites signed before 30 June get the first month free. Monthly price starts at USD 450 per site. Share the offer with your accounts. https://altavia.example/partner-promo</p>
+      </div>
+      <div class="qr-row">
+        <div id="qr" class="qr" role="img" aria-label="QR code that opens the campaign chat"></div>
+        <p class="small">Scan with a phone to open the campaign chat there. Then send the phrase below.</p>
+      </div>
+      <p class="label">The phrase to send</p>
+      <div class="phrase"><code id="phrase">Register my interest (BRF-1004)</code><button type="button" class="btn ghost" data-copy="#phrase">Copy</button></div>
+      <p class="small">The hosted chat can't pre-fill a message, so paste or type this phrase. The campaign's flow records a lead and replies with its reference.</p>
+      <button type="button" class="btn" id="open-campaign">Respond</button>
+      <div class="frame-slot" id="slot-campaign" hidden></div>
+      <div class="live">
+        <h3>See it live in iMBrace</h3>
+        <ul>
+          <li><b>Contacts / CRM:</b> a new anonymous visitor (named like &ldquo;SGP#&hellip;&rdquo;), origin &ldquo;Altavia Campaign Web Chat&rdquo;.</li>
+          <li><b>DataIQ, the leads board:</b> &ldquo;Altavia Campaign Leads&rdquo; gets a row with the lead reference (LEAD-&hellip;).</li>
+          <li><b>FlowOps &gt; Runs:</b> &ldquo;Register Interest from an Altavia Campaign (touchpoint)&rdquo;, one run per message.</li>
+          <li><b>Marketing Campaigns:</b> the campaign and its touchpoint.</li>
+          <li><b>InsightsIQ / AI Tracing:</b> nothing for this chat; it has no AI agent, only a flow.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card" id="care">
+      <p class="eyebrow">2 &middot; Customer care</p>
+      <h2>Ask customer care</h2>
+      <p>Voltra (fictional) customer care. The assistant answers only from the help articles, and gives an order's status only when the order number and the email match.</p>
+      <p class="label">Suggested questions (tap to copy, then paste in the chat)</p>
+      <ul class="asks">
+        <li><span class="ask-t">Return policy</span><button type="button" class="ask" data-text="How long do I have to return an e-scooter, and how do I start?">How long do I have to return an e-scooter, and how do I start?</button></li>
+        <li><span class="ask-t">Delivery</span><button type="button" class="ask" data-text="How long does delivery take to Singapore?">How long does delivery take to Singapore?</button></li>
+        <li><span class="ask-t">Order lookup</span><button type="button" class="ask" data-text="Where is my order VLT-50231?">Where is my order VLT-50231?</button><span class="small">It asks for your email. Reply with: jamie.chan@example.com</span></li>
+        <li><span class="ask-t">Not covered</span><button type="button" class="ask" data-text="Can you recommend a good pizza place?">Can you recommend a good pizza place?</button><span class="small">Expect a polite &quot;I can't answer that from our help articles&quot;.</span></li>
+      </ul>
+      <p class="small">Replies take about 8 to 18 seconds. Use a fresh conversation for each question (button below): a third lookup in one chat may get no reply.</p>
+      <div class="row"><button type="button" class="btn" id="open-care">Start the chat</button><button type="button" class="btn ghost" id="restart-care" hidden>New conversation</button></div>
+      <div class="frame-slot" id="slot-care" hidden></div>
+      <div class="live">
+        <h3>See it live in iMBrace</h3>
+        <ul>
+          <li><b>Contacts / CRM:</b> a new anonymous visitor, origin &ldquo;Customer Care Assistant Web Chat&rdquo;.</li>
+          <li><b>FlowOps &gt; Runs:</b> the chat workflow's run for each message, and the skill runs (&ldquo;Find Answers in the Customer FAQs&rdquo;, &ldquo;Look Up a Customer Order&rdquo;).</li>
+          <li><b>DataIQ:</b> the help articles and the synthetic orders the assistant reads (it writes nothing).</li>
+          <li><b>InsightsIQ / AI Tracing:</b> look for the &ldquo;Customer Care Assistant&rdquo; agent; it may not be listed there.</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</main>
+<footer><p>Built on iMBrace with FlowOps and AgentIQ. Ingram Micro internal study; Altavia and Voltra are fictional. Chats are served by iMBrace's hosted web chat, so each visit creates an anonymous contact in the demo account.</p></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script>
+const CONFIG = {"campaign":{"src":"https://chat-widgetv2.imbrace.co/full_page.html?channel_id=ce564587-5292-4aaf-881c-69130fea4dd5&org_id=org_393bc191-6723-48fd-8a9c-f5b910583908","qr":"https://chat-widgetv2.imbrace.co/full_page.html?channel_id=ce564587-5292-4aaf-881c-69130fea4dd5&org_id=org_393bc191-6723-48fd-8a9c-f5b910583908","phrase":"Register my interest (BRF-1004)"},"care":{"src":"https://chat-widgetv2.imbrace.co/full_page.html?channel_id=e28d4bd9-1d1c-4d2c-82b8-b185978b0c0f&org_id=org_393bc191-6723-48fd-8a9c-f5b910583908"}};
+(function () {
+  try {
+    var q = qrcode(0, 'M'); q.addData(CONFIG.campaign.qr); q.make();
+    document.getElementById('qr').innerHTML = q.createSvgTag({ cellSize: 4, margin: 2, scalable: true });
+  } catch (e) { document.getElementById('qr').textContent = 'QR unavailable'; }
+  function frame(slot, src, title) {
+    slot.hidden = false; slot.innerHTML = '';
+    var f = document.createElement('iframe'); f.src = src; f.title = title;
+    f.allow = 'clipboard-write'; slot.appendChild(f);
+  }
+  function copy(text, btn) {
+    var done = function () { var t = btn.textContent; btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = t; }, 1500); };
+    function fallback(t) { var a = document.createElement('textarea'); a.value = t; document.body.appendChild(a); a.select(); try { document.execCommand('copy'); done(); } catch (e) {} a.remove(); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, function () { fallback(text); });
+    else fallback(text);
+  }
+  document.getElementById('open-campaign').addEventListener('click', function () {
+    frame(document.getElementById('slot-campaign'), CONFIG.campaign.src, 'Altavia campaign chat (iMBrace web chat)');
+    this.textContent = 'Chat opened below'; this.disabled = true;
+  });
+  var careBtn = document.getElementById('open-care'), restart = document.getElementById('restart-care');
+  careBtn.addEventListener('click', function () {
+    frame(document.getElementById('slot-care'), CONFIG.care.src, 'Voltra customer care (iMBrace web chat)');
+    careBtn.hidden = true; restart.hidden = false;
+  });
+  restart.addEventListener('click', function () { frame(document.getElementById('slot-care'), CONFIG.care.src, 'Voltra customer care (iMBrace web chat)'); });
+  document.querySelectorAll('[data-copy]').forEach(function (b) { b.addEventListener('click', function () { copy(document.querySelector(b.dataset.copy).textContent, b); }); });
+  document.querySelectorAll('.ask').forEach(function (b) { b.addEventListener('click', function () { copy(b.dataset.text, b); }); });
+})();
+</script>
+</body>
+</html>
