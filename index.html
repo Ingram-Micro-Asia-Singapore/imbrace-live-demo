@@ -3,21 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>iMBrace live demo</title>
-<meta name="description" content="Try iMBrace live: respond to a marketing campaign and ask a customer-care assistant. Demo environment, synthetic data.">
+<title>Try four iMBrace cases and explore a fifth</title>
+<meta name="description" content="Try four buyer-selected iMBrace cases through hosted chat and explore a fifth through recorded read-only evidence. Synthetic data only.">
+<link rel="icon" href="ingram-micro-logo.svg" type="image/svg+xml">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="top"><img src="ingram-micro-logo.svg" alt="Ingram Micro" class="logo"><span class="built">Built on iMBrace</span></header>
 <main>
   <p class="eyebrow">Live demo</p>
-  <h1>Try iMBrace live: answer a campaign, then ask customer care.</h1>
-  <p class="lead">Both chats below run on iMBrace. What you do shows up in the iMBrace cloud console as it happens.</p>
-  <div class="notice" role="note"><strong>Demo environment, synthetic data.</strong> Please don't enter real personal details: what you type is stored in the demo account.</div>
+  <h1>Try four iMBrace cases live, then explore a fifth safely.</h1>
+  <p class="lead">Four cards open iMBrace-hosted widgets only when you choose them. The fifth compares retained multi-door evidence without exposing a public write endpoint. The prompts, records and companies are synthetic.</p>
+  <div class="notice" role="note"><strong>Demo environment, synthetic data only.</strong> Do not enter real personal, customer or company details. Opening a widget creates an anonymous contact in the demo tenant. This static page cannot delete it or reset platform records.</div>
 
   <div class="cards">
-    <section class="card" id="campaign">
-      <p class="eyebrow">1 &middot; Campaign response</p>
+    <section class="card campaign-card" id="campaign">
+      <p class="eyebrow">Retained live scenario &middot; Campaign response</p>
       <h2>Respond to a campaign</h2>
       <div class="msg">
         <p class="msg-from">Altavia Cloud Solutions (fictional) &middot; email campaign</p>
@@ -45,36 +46,123 @@
       </div>
     </section>
 
-    <section class="card" id="care">
-      <p class="eyebrow">2 &middot; Customer care</p>
-      <h2>Ask customer care</h2>
-      <p>Voltra (fictional) customer care. The assistant answers only from the help articles, and gives an order's status only when the order number and the email match.</p>
-      <p class="label">Suggested questions (tap to copy, then paste in the chat)</p>
+
+    <section class="card try-card" id="ce1">
+      <p class="eyebrow">Try-it 1 of 5 &middot; Customer care</p>
+      <h2>Ask a grounded customer-care assistant</h2>
+      <p class="outcome">Get a cited policy answer or a deliberately limited synthetic order lookup.</p>
+
+      <p class="label">Copy a synthetic prompt</p>
       <ul class="asks">
         <li><span class="ask-t">Return policy</span><button type="button" class="ask" data-text="How long do I have to return an e-scooter, and how do I start?">How long do I have to return an e-scooter, and how do I start?</button></li>
         <li><span class="ask-t">Delivery</span><button type="button" class="ask" data-text="How long does delivery take to Singapore?">How long does delivery take to Singapore?</button></li>
         <li><span class="ask-t">Order lookup</span><button type="button" class="ask" data-text="Where is my order VLT-50231?">Where is my order VLT-50231?</button><span class="small">It asks for your email. Reply with: jamie.chan@example.com</span></li>
         <li><span class="ask-t">Not covered</span><button type="button" class="ask" data-text="Can you recommend a good pizza place?">Can you recommend a good pizza place?</button><span class="small">Expect a polite &quot;I can't answer that from our help articles&quot;.</span></li>
       </ul>
-      <p class="small">Replies take about 8 to 18 seconds. Use a fresh conversation for each question (button below): a third lookup in one chat may get no reply.</p>
-      <div class="row"><button type="button" class="btn" id="open-care">Start the chat</button><button type="button" class="btn ghost" id="restart-care" hidden>New conversation</button></div>
-      <div class="frame-slot" id="slot-care" hidden></div>
-      <div class="live">
-        <h3>See it live in iMBrace</h3>
-        <ul>
-          <li><b>Contacts / CRM:</b> a new anonymous visitor, origin &ldquo;Customer Care Assistant Web Chat&rdquo;.</li>
-          <li><b>FlowOps &gt; Runs:</b> the chat workflow's run for each message, and the skill runs (&ldquo;Find Answers in the Customer FAQs&rdquo;, &ldquo;Look Up a Customer Order&rdquo;).</li>
-          <li><b>DataIQ:</b> the help articles and the synthetic orders the assistant reads (it writes nothing).</li>
-          <li><b>InsightsIQ / AI Tracing:</b> look for the &ldquo;Customer Care Assistant&rdquo; agent; it may not be listed there.</li>
-        </ul>
+      <div class="row">
+        <button type="button" class="btn" data-open-widget="ce1">Open hosted chat</button>
+        <button type="button" class="btn ghost" data-reset-widget="ce1" hidden>Close chat locally</button>
       </div>
+      <p class="small reset-copy" id="ce1-reset-copy">The widget loads only after you click. This static page cannot reset iMBrace records or cross-site conversation storage.</p>
+      <div class="frame-slot" id="slot-ce1" hidden></div>
+      <div class="live">
+        <h3>What to look for</h3>
+        <ul><li>The assistant reads the current help articles on every policy question.</li><li>Order details appear only after both the synthetic order number and matching synthetic email are supplied.</li></ul>
+      </div>
+      <p class="boundary"><b>Boundary:</b> Read-only skills. Use synthetic details only. A third lookup in one conversation can return no reply.</p>
+    </section>
+
+    <section class="card try-card" id="ce3">
+      <p class="eyebrow">Try-it 2 of 5 &middot; Enquiry to booking</p>
+      <h2>Take a service enquiry to a held booking</h2>
+      <p class="outcome">Qualify a fictional device-service request, see offered slots, then choose one in the same chat.</p>
+
+      <p class="label">Copy a synthetic prompt</p>
+      <ul class="asks">
+        <li><span class="ask-t">Complete enquiry</span><button type="button" class="ask" data-text="I need battery replacements for 5 phones at Tampines. My name is Aisha Rahman and my email is aisha.rahman@example.com.">I need battery replacements for 5 phones at Tampines. My name is Aisha Rahman and my email is aisha.rahman@example.com.</button></li>
+        <li><span class="ask-t">Missing details</span><button type="button" class="ask" data-text="I need help with some phones.">I need help with some phones.</button></li>
+      </ul>
+      <div class="row">
+        <button type="button" class="btn" data-open-widget="ce3">Open hosted chat</button>
+        <button type="button" class="btn ghost" data-reset-widget="ce3" hidden>Close chat locally</button>
+      </div>
+      <p class="small reset-copy" id="ce3-reset-copy">The widget loads only after you click. This static page cannot reset iMBrace records or cross-site conversation storage.</p>
+      <div class="frame-slot" id="slot-ce3" hidden></div>
+      <div class="live">
+        <h3>What to look for</h3>
+        <ul><li>The assistant asks only for missing information.</li><li>A completed synthetic enquiry can create a waiting iMBrace run and a synthetic booking record.</li></ul>
+      </div>
+      <p class="boundary"><b>Boundary:</b> This hosted chat can write synthetic enquiry and booking records inside the demo tenant. It sends no email and connects to no calendar.</p>
+    </section>
+
+    <section class="card try-card" id="ca3">
+      <p class="eyebrow">Try-it 3 of 5 &middot; Sales and margin</p>
+      <h2>Question a governed sales mart</h2>
+      <p class="outcome">Ask for regional Q3 performance and get quoted source values rather than invented arithmetic.</p>
+
+      <p class="label">Copy a synthetic prompt</p>
+      <ul class="asks">
+        <li><span class="ask-t">Regional view</span><button type="button" class="ask" data-text="Show Q3 revenue and gross margin for North, South, East and West.">Show Q3 revenue and gross margin for North, South, East and West.</button></li>
+        <li><span class="ask-t">Out of scope</span><button type="button" class="ask" data-text="What is next quarter's revenue forecast?">What is next quarter's revenue forecast?</button></li>
+      </ul>
+      <div class="row">
+        <button type="button" class="btn" data-open-widget="ca3">Open hosted chat</button>
+        <button type="button" class="btn ghost" data-reset-widget="ca3" hidden>Close chat locally</button>
+      </div>
+      <p class="small reset-copy" id="ca3-reset-copy">The widget loads only after you click. This static page cannot reset iMBrace records or cross-site conversation storage.</p>
+      <div class="frame-slot" id="slot-ca3" hidden></div>
+      <div class="live">
+        <h3>What to look for</h3>
+        <ul><li>The assistant uses the synthetic Sales &amp; Margin Mart.</li><li>Questions outside the mart should be refused rather than estimated.</li></ul>
+      </div>
+      <p class="boundary"><b>Boundary:</b> Read-only analysis over synthetic regional records. Forecasts and targets are intentionally absent.</p>
+    </section>
+
+    <section class="card try-card" id="km1">
+      <p class="eyebrow">Try-it 4 of 5 &middot; HR policy Q&amp;A</p>
+      <h2>Ask policy; keep the public demo read-only</h2>
+      <p class="outcome">Receive a cited policy answer or an honest refusal, without creating an HR work item.</p>
+
+      <p class="label">Copy a synthetic prompt</p>
+      <ul class="asks">
+        <li><span class="ask-t">Current policy</span><button type="button" class="ask" data-text="Can I carry over 10 days of annual leave and use them by the end of June?">Can I carry over 10 days of annual leave and use them by the end of June?</button></li>
+        <li><span class="ask-t">Policy search</span><button type="button" class="ask" data-text="What is the current annual leave policy?">What is the current annual leave policy?</button></li>
+      </ul>
+      <div class="row">
+        <button type="button" class="btn" data-open-widget="km1">Open hosted chat</button>
+        <button type="button" class="btn ghost" data-reset-widget="km1" hidden>Close chat locally</button>
+      </div>
+      <p class="small reset-copy" id="km1-reset-copy">The widget loads only after you click. This static page cannot reset iMBrace records or cross-site conversation storage.</p>
+      <div class="frame-slot" id="slot-km1" hidden></div>
+      <div class="live">
+        <h3>What to look for</h3>
+        <ul><li>Answers cite the retained synthetic policy source and ignore superseded versions.</li><li>An unknown question is refused; this public copy has no FlowOps skill and cannot create an HR review item.</li></ul>
+      </div>
+      <p class="boundary"><b>Boundary:</b> Synthetic HR policy only. This separate public copy has memory off and zero workflow skills; no review or publish link is exposed.</p>
+    </section>
+
+    <section class="card try-card" id="ce5">
+      <p class="eyebrow">Try-it 5 of 5 &middot; One assistant, several doors</p>
+      <h2>Compare the same answer across five recorded doors</h2>
+      <p class="outcome">Explore the retained result from console, hosted chat, embedded chat, workflow and backend routes without exposing a write endpoint.</p>
+
+      <button type="button" class="btn" data-toggle-evidence="ce5" aria-expanded="false">Compare five recorded doors</button>
+      <div class="recorded-panel" id="ce5-recorded" hidden>
+        <p><b>Recorded evidence — not a live run</b></p>
+        <ol><li>InsightsIQ console — the grounded answer was asked inside iMBrace.</li><li>Hosted chat — the same assistant answered through ConnectIQ.</li><li>Synthetic partner portal — the hosted widget was embedded on the recorded local portal.</li><li>FlowOps route — retained evidence shows the same answer; the public endpoint is not exposed.</li><li>Backend route — retained evidence shows the same answer; no public proxy is deployed.</li></ol>
+      </div>
+      <div class="live">
+        <h3>What to look for</h3>
+        <ul><li>Every retained door used the same synthetic help articles and assistant.</li><li>Only the read-only comparison is public here; CE-1 already provides the one safe live hosted door.</li></ul>
+      </div>
+      <p class="boundary"><b>Boundary:</b> Recorded read-only evidence, not a new live run. No webhook, backend endpoint, proxy or channel id is added for this card.</p>
     </section>
   </div>
 </main>
-<footer><p>Built on iMBrace with FlowOps and AgentIQ. Ingram Micro internal study; Altavia and Voltra are fictional. Chats are served by iMBrace's hosted web chat, so each visit creates an anonymous contact in the demo account.</p></footer>
+<footer><p>Built on iMBrace with AgentIQ, FlowOps, DataIQ and ConnectIQ. Ingram Micro study; all named organisations and records are fictional. Every hosted-widget visit creates an anonymous contact in the demo tenant.</p></footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 <script>
-const CONFIG = {"campaign":{"src":"https://chat-widgetv2.imbrace.co/full_page.html?channel_id=ce564587-5292-4aaf-881c-69130fea4dd5&org_id=org_393bc191-6723-48fd-8a9c-f5b910583908","qr":"https://chat-widgetv2.imbrace.co/full_page.html?channel_id=ce564587-5292-4aaf-881c-69130fea4dd5&org_id=org_393bc191-6723-48fd-8a9c-f5b910583908","phrase":"Register my interest (BRF-1004)"},"care":{"src":"https://chat-widgetv2.imbrace.co/full_page.html?channel_id=e28d4bd9-1d1c-4d2c-82b8-b185978b0c0f&org_id=org_393bc191-6723-48fd-8a9c-f5b910583908"}};
+const CONFIG = {"campaign":{"src":"https://chat-widgetv2.imbrace.co/full_page.html?channel_id=ce564587-5292-4aaf-881c-69130fea4dd5&org_id=org_393bc191-6723-48fd-8a9c-f5b910583908","qr":"https://chat-widgetv2.imbrace.co/full_page.html?channel_id=ce564587-5292-4aaf-881c-69130fea4dd5&org_id=org_393bc191-6723-48fd-8a9c-f5b910583908","phrase":"Register my interest (BRF-1004)"},"widgets":{"ce1":{"src":"https://chat-widgetv2.imbrace.co/full_page.html?channel_id=e28d4bd9-1d1c-4d2c-82b8-b185978b0c0f&org_id=org_393bc191-6723-48fd-8a9c-f5b910583908"},"ce3":{"src":"https://chat-widgetv2.imbrace.co/full_page.html?channel_id=e57f9e46-6f31-44e5-8a4d-aec03e95991e&org_id=org_393bc191-6723-48fd-8a9c-f5b910583908"},"ca3":{"src":"https://chat-widgetv2.imbrace.co/full_page.html?channel_id=b80b8091-1b00-4fea-aa8f-9dbac19a4904&org_id=org_393bc191-6723-48fd-8a9c-f5b910583908"},"km1":{"src":"https://chat-widgetv2.imbrace.co/full_page.html?channel_id=d2129724-11f2-487b-a316-e75db752ca4a&org_id=org_393bc191-6723-48fd-8a9c-f5b910583908"}}};
 (function () {
   try {
     var q = qrcode(0, 'M'); q.addData(CONFIG.campaign.qr); q.make();
@@ -95,12 +183,32 @@ const CONFIG = {"campaign":{"src":"https://chat-widgetv2.imbrace.co/full_page.ht
     frame(document.getElementById('slot-campaign'), CONFIG.campaign.src, 'Altavia campaign chat (iMBrace web chat)');
     this.textContent = 'Chat opened below'; this.disabled = true;
   });
-  var careBtn = document.getElementById('open-care'), restart = document.getElementById('restart-care');
-  careBtn.addEventListener('click', function () {
-    frame(document.getElementById('slot-care'), CONFIG.care.src, 'Voltra customer care (iMBrace web chat)');
-    careBtn.hidden = true; restart.hidden = false;
+  document.querySelectorAll('[data-open-widget]').forEach(function (open) {
+    open.addEventListener('click', function () {
+      var id = open.dataset.openWidget;
+      frame(document.getElementById('slot-' + id), CONFIG.widgets[id].src, id.toUpperCase() + ' iMBrace hosted chat');
+      open.hidden = true;
+      document.querySelector('[data-reset-widget="' + id + '"]').hidden = false;
+      document.getElementById(id + '-reset-copy').textContent = 'Hosted chat opened. Close removes the iframe only; iMBrace retains the contact and conversation records.';
+    });
   });
-  restart.addEventListener('click', function () { frame(document.getElementById('slot-care'), CONFIG.care.src, 'Voltra customer care (iMBrace web chat)'); });
+  document.querySelectorAll('[data-reset-widget]').forEach(function (reset) {
+    reset.addEventListener('click', function () {
+      var id = reset.dataset.resetWidget, slot = document.getElementById('slot-' + id);
+      slot.innerHTML = ''; slot.hidden = true; reset.hidden = true;
+      document.querySelector('[data-open-widget="' + id + '"]').hidden = false;
+      document.getElementById(id + '-reset-copy').textContent = 'Chat closed locally. For a fresh iMBrace conversation, use a new browser profile; this page cannot clear cross-site widget storage.';
+    });
+  });
+  document.querySelectorAll('[data-toggle-evidence]').forEach(function (toggle) {
+    toggle.addEventListener('click', function () {
+      var panel = document.getElementById(toggle.dataset.toggleEvidence + '-recorded');
+      var opening = panel.hidden;
+      panel.hidden = !opening;
+      toggle.setAttribute('aria-expanded', String(opening));
+      toggle.textContent = opening ? 'Hide recorded comparison' : 'Compare five recorded doors';
+    });
+  });
   document.querySelectorAll('[data-copy]').forEach(function (b) { b.addEventListener('click', function () { copy(document.querySelector(b.dataset.copy).textContent, b); }); });
   document.querySelectorAll('.ask').forEach(function (b) { b.addEventListener('click', function () { copy(b.dataset.text, b); }); });
 })();
